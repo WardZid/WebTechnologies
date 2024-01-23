@@ -5,57 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Scientific Calculator</title>
-    <!--<link rel="stylesheet" href="./style.css">-->
+    <link rel="stylesheet" href="ScientificCalculator.css">
   </head>
-  <style>
-    .Calculator{
-        margin: auto;
-        padding: 10px;
-        background-color: lightgrey;
-        width: fit-content;
-        border:1px solid black;
-        border-radius: 5px;
-    }
-    textarea {
-        resize: none;
-    }
-    button{
-        width: 50px;
-        height: 50px;
-        border-radius: 3px;
-        font-weight: bold;
-        font-size: 15pt;
-    }
-    </style>
   <body>
     <div class="Calculator">
         <table>
             <tr>
-                <textarea style="width: 200px; margin: 5px;"></textarea>
+                <textarea>0</textarea>
             </tr>
             <tr>
-                <td><button>7</button></td>
-                <td><button>8</button></td>
-                <td><button>9</button></td>
-                <td><button style="background-color: darkslategrey; color: white">+</button></td>
+                <td><button>2ⁿᵈ</button></td>
+                <td><button>π</button></td>
+                <td><button>e</button></td>
+                <td><button>c</button></td>
+                <td><button>⌫</button></td>
             </tr>
             <tr>
-                <td><button>4</button></td>
-                <td><button>5</button></td>
-                <td><button>6</button></td>
-                <td><button style="background-color: darkslategrey; color: white">-</button></td>
+                <td><button>x</button></td>
+                <td><button>1/x</button></td>
+                <td><button>|x|</button></td>
+                <td><button>exp</button></td>
+                <td><button>mod</button></td>
             </tr>
             <tr>
-                <td><button>1</button></td>
-                <td><button>2</button></td>
-                <td><button>3</button></td>
-                <td><button style="background-color: darkslategrey; color: white">×</button></td>
+                <td><button>²√x</button></td>
+                <td><button>(</button></td>
+                <td><button>)</button></td>
+                <td><button>n!</button></td>
+                <td><button>÷</button></td>
             </tr>
             <tr>
-                <td><button style="background-color: red; color: white">C</button></td>
-                <td><button>0</button></td>
-                <td><button style="background-color: rgb(110, 173, 16); color: white">=</button></td>
-                <td><button style="background-color: darkslategrey; color: white">÷</button></td>
+                <td><button>xʸ</button></td>
+                <td><button class="NumberKeys">7</button></td>
+                <td><button class="NumberKeys">8</button></td>
+                <td><button class="NumberKeys">9</button></td>
+                <td><button>×</button></td>
+            </tr>
+            <tr>
+                <td><button>10ˣ</button></td>
+                <td><button class="NumberKeys">4</button></td>
+                <td><button class="NumberKeys">5</button></td>
+                <td><button class="NumberKeys">6</button></td>
+                <td><button>-</button></td>
+            </tr>
+            <tr>
+                <td><button>log</button></td>
+                <td><button class="NumberKeys">1</button></td>
+                <td><button class="NumberKeys">2</button></td>
+                <td><button class="NumberKeys">3</button></td>
+                <td><button>+</button></td>
+            </tr>
+            <tr>
+                <td><button>ln</button></td>
+                <td><button>+/-</button></td>
+                <td><button class="NumberKeys">0</button></td>
+                <td><button>.</button></td>
+                <td><button style="background-color: rgb(71, 80, 147);">=</button></td>
             </tr>
         </table>
     </div>

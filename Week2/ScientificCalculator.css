@@ -1,0 +1,32 @@
+.Calculator{
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(36, 41, 46);
+    width: fit-content;
+    border:1px solid black;
+    border-radius: 5px;
+}
+textarea {
+    height: 70px;
+    width: 405px;
+    margin: 5px;
+    resize: none;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 60px;
+    text-align: right;
+}
+button{
+    width: 80px;
+    height: 40px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 15pt;
+    color: white;
+    background-color: rgb(56, 64, 71);
+    border: none;
+}
+.NumberKeys{
+    background-color:rgb(72, 82, 92)
+}
