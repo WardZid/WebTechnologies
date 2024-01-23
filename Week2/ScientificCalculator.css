@@ -29,11 +29,17 @@ button{
     cursor: pointer;
 }
 button:hover{
-    background-color: rgb(65, 73, 81);
+    background-color: rgb(72, 82, 92);
 }
 .NumberKeys{
-    background-color:rgb(72, 82, 92)
+    background-color:rgb(72, 82, 92);
 }
 .NumberKeys:hover{
-    background-color:rgb(80, 91, 102)
+    background-color:rgb(56, 64, 71);
+}
+.EqualsKey{
+    background-color: rgb(88, 98, 180);
+}
+.EqualsKey:hover{
+    background-color: rgb(71, 80, 147);
 }
