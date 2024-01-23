@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Simple Calculator</title>
+    <!--<link rel="stylesheet" href="./style.css">-->
+  </head>
+  <style>
+    .Calculator{
+        margin: auto;
+        padding: 10px;
+        background-color: lightgrey;
+        width: fit-content;
+        border:1px solid black;
+        border-radius: 5px;
+    }
+    textarea {
+        resize: none;
+    }
+    button{
+        width: 50px;
+        height: 50px;
+        border-radius: 3px;
+        font-weight: bold;
+        font-size: 15pt;
+    }
+    </style>
+  <body>
+    <div class="Calculator">
+        <table>
+            <tr>
+                <textarea style="width: 200px; margin: 5px;"></textarea>
+            </tr>
+            <tr>
+                <td><button>7</button></td>
+                <td><button>8</button></td>
+                <td><button>9</button></td>
+                <td><button style="background-color: darkslategrey; color: white">+</button></td>
+            </tr>
+            <tr>
+                <td><button>4</button></td>
+                <td><button>5</button></td>
+                <td><button>6</button></td>
+                <td><button style="background-color: darkslategrey; color: white">-</button></td>
+            </tr>
+            <tr>
+                <td><button>1</button></td>
+                <td><button>2</button></td>
+                <td><button>3</button></td>
+                <td><button style="background-color: darkslategrey; color: white">×</button></td>
+            </tr>
+            <tr>
+                <td><button style="background-color: red; color: white">C</button></td>
+                <td><button>0</button></td>
+                <td><button style="background-color: rgb(110, 173, 16); color: white">=</button></td>
+                <td><button style="background-color: darkslategrey; color: white">÷</button></td>
+            </tr>
+        </table>
+    </div>
+    <!-- your app code goes here -->
+
+    <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
+    <script>
+        // custom config for the MTW app 
+        const mtwAppConfig = {
+            border: true // app border in the MTW page                    
+        }
+
+        ///////////////////////////////////////////////////////
+        // implement this functions in order to use private API        
+        const sendPrivateApiRequest = async () => {
+            // your code here:
+            // sendRequestToParent({ cat: 'getAssets' })
+        }        
+
+        const acceptPrivateApiResponse = async (data) => {
+            // process received data here:
+            // console.log(data)
+        }
+
+        // use this in order to send on document load
+        document.addEventListener('DOMContentLoaded', () => {
+            // your code here:
+            //sendRequestToParent({ method: 'getAssets' })
+        })
+
+    </script>
+    <script src="https://morethanwallet.com/appstore/index.js"></script>
+
+  </body>
+</html>
