@@ -1,22 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Page</title>
-</head>
-<body>
-
-    <h1>Welcome to My Website</h1>
-    
-    <button onclick="navigateToPage('Week1/SimpleCalculator.html')">Week 1 - Simple Calculator</button>
-    <button onclick="navigateToPage('Week2/ScientificCalculator.html')">Week 2 - Scientific Calculator</button>
-
-    <script>
-        function navigateToPage(page) {
-            window.location.href = page;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Navigation Page</title>
+    </head>
+    <style>
+        .Navigation{
+            width: fit-content;
+            height: max-content;
+            background-color: ghostwhite;
         }
-    </script>
+        .Navigation button{
+            min-height: 40px;
+            width: 100%;
+            text-align: left;
+            font-weight: bold;
+            font-size: large;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            padding: 5px;
+            background-color: transparent;
+            border: none;
+            display: block;
+            cursor: pointer;
+        }
+        .Navigation button:hover{
+            background-color: gray;
+            color: white;
+        }
+    </style>
+    <body>
+        <div class="Navigation">
+            <button onclick="navigateToPage('Week1/SimpleCalculator.html')">Week 1 - Simple Calculator</button>
+            <button onclick="navigateToPage('Week2/ScientificCalculator.html')">Week 2 - Scientific Calculator</button>
 
-</body>
+            <script>
+                function navigateToPage(page) {
+                    window.location.href = page;
+                }
+            </script>
+        </div>
+    </body>
 </html>
