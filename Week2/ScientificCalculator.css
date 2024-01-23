@@ -26,7 +26,14 @@ button{
     color: white;
     background-color: rgb(56, 64, 71);
     border: none;
+    cursor: pointer;
+}
+button:hover{
+    background-color: rgb(65, 73, 81);
 }
 .NumberKeys{
     background-color:rgb(72, 82, 92)
+}
+.NumberKeys:hover{
+    background-color:rgb(80, 91, 102)
 }
