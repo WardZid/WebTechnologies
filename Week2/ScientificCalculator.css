@@ -52,3 +52,13 @@ button:active{
 .EqualsKey:active{
     background-color: rgb(63, 70, 128);
 }
+
+#infoMessage {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+  }
