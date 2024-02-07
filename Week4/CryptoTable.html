@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Working on it</h1>
+
+<body style="overflow-y:scroll;">
+    <div id="app" class="max-w-[1000px] mx-auto">
+        <h1 class="font-bold text-3xl text-center text-blue-600 my-4">
+            Cryptocurrency Data
+        </h1>
+    </div>
+    <table class="mx-10">
+        <tbody id="crypto-table-body">
+            <!-- Table rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+
+        const row = (k, v, i) => {
+            return `
+                <tr class="border-l border-r border-gray-300">
+                  <td class="w-16 p-2 align-top border-b ${i === 0 && ' border-t'} border-gray-200"><img class="h-full w-auto" src="${v['image']}" /></td>
+                  <td class="py-1 px-2 border-t border-b border-gray-300">${k}</td>
+                  <td class="py-1 px-2 border-t border-b border-gray-300 font-bold text-blue-600">${v['name']}</td>
+                  <td class="py-1 px-2 border-t border-b border-gray-300">${v['summary']}</td>
+                  <!-- Add more table cells as needed -->
+                </tr>`;
+        };
+        const createTable = (data) => {
+            tableRows = '';
+
+            Object.entries(data).forEach(([key, value], index) => {
+                tableRows += row(key, value, index);
+            });
+
+            document.getElementById('crypto-table-body').innerHTML = tableRows;
+        }
+        const apiUrl = "https://api.mtw-testnet.com/assets/all"
+        fetch(apiUrl)
+            .then((response) => {
+                return response.json()
+            })
+            .then((v) => createTable(v))
+            .catch((err) => console.log(err))
+
+
+    </script>
 
 
 
@@ -17,13 +61,8 @@
 
 
 
-
-
-
-
-
-     <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
-     <script>
+    <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
+    <script>
         // custom config for the MTW app 
         const mtwAppConfig = {
             border: true // app border in the MTW page                    
@@ -34,7 +73,7 @@
         const sendPrivateApiRequest = async () => {
             // your code here:
             // sendRequestToParent({ cat: 'getAssets' })
-        }        
+        }
 
         const acceptPrivateApiResponse = async (data) => {
             // process received data here:
@@ -51,4 +90,5 @@
     <script src="https://morethanwallet.com/appstore/index.js"></script>
 
 </body>
+
 </html>
