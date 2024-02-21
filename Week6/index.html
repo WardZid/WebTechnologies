@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fetch API</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* No need for additional styling */
+  </style>
+  <script>
+    const url = "https://dummyjson.com/products";
+    const opt = {
+      // config for fetch
+      mode: "cors", // cross domain request is allowed
+    };
+
+    let displayedProducts = 10; // Number of products initially displayed
+    let allProducts;
+
+    const fetchProducts = async () => {
+      try {
+        let response = await fetch(url, opt);
+        let data = await response.json();
+        allProducts = data.products; // Store all products data
+        displayProducts(allProducts.slice(0, displayedProducts)); // Display only the first 10 products
+        console.log(data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    const displayProducts = (products) => {
+      const container = document.getElementById("myTable");
+      let table = `<table class="border-2 items-center justify-center">`;
+      table += createTableHeader();
+      products.forEach((dataRow) => {
+        table += createRow(dataRow);
+      });
+      table += `</table>`;
+      container.innerHTML = table;
+
+      // If there are more products to load, show the "Load More" button
+      if (displayedProducts < allProducts.length) {
+        container.innerHTML += `
+          <div class="flex justify-center mt-4">
+            <button onclick="loadMore()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Load More</button>
+          </div>`;
+      }
+    };
+
+    const createTableHeader = () => {
+      return `<tr>
+        <th>Title</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>After Discount</th>
+        <th>About</th>
+        </tr>`;
+    };
+
+    const createRow = (row) => {
+      const price = parseFloat(row.price);
+      const discountPrice = price - price * parseFloat(row.discountPrice);
+      return `<tr class="border-4">
+          <td class="border px-4 py-2 font-bold">${row.title}</td>
+          <td class="border text-center px-4 py-2">${row.brand}</td>
+          <td class="border text-center px-4 py-2">${row.price}</td>
+          <td class="border text-center px-4 py-2">${discountPrice}</td>
+          <td class="border px-4 py-2">${row.description}</td>
+        </tr>`;
+    };
+
+    const loadMore = () => {
+      displayedProducts += 10; // Increase the number of displayed products by 10
+      displayProducts(allProducts.slice(0, displayedProducts)); // Display additional products
+    };
+
+    fetchProducts();
+  </script>
+</head>
+
+<body>
+  <div id="myTable"></div>
+
+  
+
+    <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
+    <script>
+      // custom config for the MTW app 
+      const mtwAppConfig = {
+          border: true // app border in the MTW page                    
+      }
+
+      ///////////////////////////////////////////////////////
+      // implement this functions in order to use private API        
+      const sendPrivateApiRequest = async () => {
+          // your code here:
+          // sendRequestToParent({ cat: 'getAssets' })
+      }
+
+      const acceptPrivateApiResponse = async (data) => {
+          // process received data here:
+          // console.log(data)
+      }
+
+      // use this in order to send on document load
+      document.addEventListener('DOMContentLoaded', () => {
+          // your code here:
+          //sendRequestToParent({ method: 'getAssets' })
+      })
+
+  </script>
+  <script src="https://morethanwallet.com/appstore/index.js"></script>
+</body>
+
+</html>
