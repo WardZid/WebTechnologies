@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="imageApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Gallery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        .thumbnail {
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .thumbnail img {
+            max-width: 90px;
+            max-height: 90px;
+            transition: transform 0.2s ease;
+        }
+        .enlarged {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body ng-controller="ImageController">
+    <div>
+        <div class="thumbnail" ng-repeat="image in images" ng-click="enlargeImage(image)">
+            <img src="{{image.url}}" alt="Random Image">
+        </div>
+    </div>
+
+    <div ng-show="enlargedImage" class="enlarged">
+        <img ng-src="{{ enlargedImage }}" alt="Enlarged Image" ng-click="closeImage()">
+    </div>
+
+    <script>
+        var app = angular.module('imageApp', []);
+
+        app.controller('ImageController', function($scope, $http) {
+            $scope.images = [];
+            $scope.enlargedImage = null;
+
+            // Fetch random images
+            for (var i = 0; i < 15; i++) {
+                $http.get('https://picsum.photos/400?random=' + i)
+                    .then(function(response) {
+                        $scope.images.push({ url: response.config.url });
+                    });
+            }
+
+            $scope.enlargeImage = function(image) {
+                $scope.enlargedImage = image.url;
+            };
+
+            $scope.closeImage = function() {
+                $scope.enlargedImage = null;
+            };
+        });
+    </script>
+</body>
+</html>
