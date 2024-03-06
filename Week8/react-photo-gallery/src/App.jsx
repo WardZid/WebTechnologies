@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [images, setImages] = useState([]);
+  const [enlargedImage, setEnlargedImage] = useState(null);
+
+  useEffect(() => {
+    // Fetch random images
+    const fetchImages = async () => {
+      const imageArray = [];
+      for (let i = 0; i < 15; i++) {
+        try {
+          const response = await fetch(`https://picsum.photos/400?random=${i}`);
+          if (response.ok) {
+            const url = response.url;
+            imageArray.push({ url });
+          } else {
+            console.error('Failed to fetch image:', response.status);
+          }
+        } catch (error) {
+          console.error('Error fetching image:', error);
+        }
+      }
+      setImages(imageArray);
+    };
+
+    fetchImages();
+  }, []);
+
+  const enlargeImage = (image) => {
+    setEnlargedImage(image.url);
+  };
+
+  const closeImage = () => {
+    setEnlargedImage(null);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <div className="image-container"> {/* Container for images */}
+        {images.map((image, index) => (
+          <div className="thumbnail" key={index} onClick={() => enlargeImage(image)}>
+            <img src={image.url} alt="Random Image" />
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      {enlargedImage && (
+        <div className="enlarged">
+          <img src={enlargedImage} alt="Enlarged Image" onClick={closeImage} />
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
